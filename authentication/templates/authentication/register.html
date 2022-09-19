@@ -1,0 +1,52 @@
+{% extends 'authentication/base.html' %}
+  {% block content %}
+    <section class="h-100 h-custom" style="background-color: #8fc4b7;">
+      <div class="container py-5 h-100">
+        <div class="row d-flex justify-content-center align-items-center h-100">
+          <div class="col-lg-8 col-xl-6">
+            <div class="card rounded-3">
+              <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-registration/img3.webp"
+                class="w-100" style="border-top-left-radius: .3rem; border-top-right-radius: .3rem;"
+                alt="Sample photo">
+              <div class="card-body p-4 p-md-5">
+                <h3 class="mb-4 pb-2 pb-md-0 mb-md-5 px-md-2">Registration Info</h3>
+                {% for message in messages %}
+                <div class="alert alert-{{message.tags}} alert-dismissible fade show" role="alert">
+                  <strong>{{message}}</strong>
+                  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                {% endfor %}
+                <form method="post" class="px-md-2">{% csrf_token %}
+    
+                  <div class="form-outline mb-4">
+                    <label class="form-label" for="username">Name</label>
+                    <input type="text" id="username" class="form-control" name="username" required/>
+                  </div>
+                  <div class="form-outline mb-4">
+                    <label class="form-label" for="email">email</label>
+                    <input type="text" id="email" class="form-control" name="email" />
+                  </div>
+                  <div class="form-outline mb-4">
+                    <label class="form-label" for="password">Password</label>
+                    <input type="password"  id="password" class="form-control" name="password" required/>
+                  </div>
+                  <div class="form-outline mb-4">
+                    <label class="form-label" for="confirm_password">Confirm Password</label>
+                    <input id="confirm_password" class="form-control" type="password" name="confirm_password" required/>
+                  </div>
+    
+                  <button type="submit" class="btn btn-success btn-lg  btn-block mb-1">Submit</button><hr>
+                  <div class="foot">
+                    Aleready registered? <a href="{% url 'login' %}"><u>Log in</u></a>
+                  </div>
+                </form>
+    
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+{% endblock %}

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="test"></div>
+</body>
+<script>
+    // resultDiv=document.getElementById('results')
+    fetch('/test/').then((res)=>{
+        res.headers.forEach(function(val, key) { console.log(key + ' -> ' + val); });
+        res.json().then((data)=>{
+                console.log(Object.keys(data))
+                for(let key in data){
+                    console.log(key,data[key])
+                    document.getElementById("test").innerHTML +=key +" : " +data[key]+ "<br>";
+                }
+        })
+    })
+</script>
+</html>
