@@ -12,10 +12,11 @@
   </head>
   <body>
     <div class="tcontainer">
-        <div id="time">time</div>
+    {% if user.is_authenticated %}<h2>Welcome {{user}}</h2>{% endif  %}
+        <h2><div id="time">time</div></h2>
         <div id="date" class="date">date</div>
+    {% if user.is_authenticated %} <a href="{% url 'logout' %}">log out</a> {% endif %}
     </div>
-    {% if user.is_authenticated %}<h1>Welcome {{user}}</h1>{% endif  %}
     {% block content %}
 
     {% endblock %}
@@ -41,6 +42,7 @@ height: 100vh !important;
 }
 .tcontainer{
   display: flex;
+  background-color: yellowgreen;
   justify-content: space-around;
 }
   </style>
@@ -48,7 +50,7 @@ height: 100vh !important;
     time_div=document.getElementById('time')
     date_div=document.getElementById('date')
     function fetchTime(){
-      fetch('/time').then(res=>{
+      fetch('/main/time').then(res=>{
       console.log(res)
       res.json().then(data=>{
         console.log(data)

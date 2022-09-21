@@ -1,10 +1,11 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import HttpResponse,JsonResponse
 from datetime   import datetime,date
 from .models import QrCode
 import pyqrcode
 import png
 from django.core.mail import send_mail
+from django.contrib import messages
 # Create your views here.
 
 def home(request):
@@ -57,11 +58,12 @@ def rock_paper_scissor(request):
         if bot_move==player_move:
             result='Tie'
         elif bot_move=='rock' and player_move=='scissor' or bot_move=='paper' and player_move=='rock' or bot_move=='scissor' and player_move=='paper':
-            result='Bot won'
+            result='Bot won!'
         else:
-            result='Player Won'
-        return HttpResponse(f'Bot Move : {bot_move}, Your Move : {player_move},<hr>Result : {result}')
-
+            result='You Won!'
+        # return HttpResponse(f'Bot Move : {bot_move}, Your Move : {player_move},<hr>Result : {result}')
+        messages.info(request,f'Bot Move : {bot_move}, Your Move : {player_move} Result : {result}')
+        return redirect('/main')
 def test_API(request):
     return JsonResponse({"sum":"value","second":"book","third":'animal'})
 def fetch_page(request):

@@ -14,5 +14,8 @@
         <option name="scissor">Scissor</oprion>
         </select>
         <input type="submit"></form>
+        {%  for message in messages %}
+          <h1> {{message}} </h1>
+        {% endfor %}    
 </body>
 </html>

@@ -11,7 +11,7 @@
 </body>
 <script>
     // resultDiv=document.getElementById('results')
-    fetch('/test/').then((res)=>{
+    fetch('/main/test').then((res)=>{
         res.headers.forEach(function(val, key) { console.log(key + ' -> ' + val); });
         res.json().then((data)=>{
                 console.log(Object.keys(data))

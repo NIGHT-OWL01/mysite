@@ -18,8 +18,8 @@ from django.urls import path
 from main import views
 
 urlpatterns = [
-    path('', views.fetch_page,name='home page'),
-    # path('', views.rock_paper_scissor,name='home page'),
+    # path('', views.fetch_page,name='home page'),
+    path('', views.rock_paper_scissor,name='home page'),
     path('test/',views.test_API,name='test'),
     path('time/',views.time,name='clock')
 ]
