@@ -44,7 +44,7 @@ def session_read(request):
     request.session['token']='Token'
     return HttpResponse(request.session)
 import random
-@login_required(login_url='accounts/login/')
+# @login_required(login_url='accounts/login/')
 def rock_paper_scissor(request):
     if request.method=='GET':
         code=''

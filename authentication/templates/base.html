@@ -7,8 +7,8 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-
-    <title>Hello, world! </title>
+    {% block title %}
+    {% endblock %}
   </head>
   <body>
     <!-- <div class="tcontainer">
@@ -48,9 +48,9 @@
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
               <a class="dropdown-item" href="{% url 'home page' %}">Rock Paper Scissor</a>
-              <a class="dropdown-item" href="#">under construction</a>
+              <a class="dropdown-item" href="{% url 'chat' %}">Chat app</a>
               <div class="dropdown-divider"></div>
-              <a class="dropdown-item" href="#">Comming soon..</a>
+              <a class="dropdown-item" href="{% url 'store contact' %}">Comming soon..</a>
             </div>
           </li>
           <li class="nav-item">

@@ -42,5 +42,5 @@ class ChatConsumer(WebsocketConsumer):
         print('chat_message called',self)
         # Send message to WebSocket
         self.send(text_data=json.dumps({
-            'message': message
+            'message': message,
         }))

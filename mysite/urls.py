@@ -21,5 +21,6 @@ urlpatterns = [
     path('accounts/',include('authentication.urls'),name='authentications'),
     path('',include('main.urls'),name='main app'),
     # path('',include('quiz.urls'),name='quiz app'),
-    # path('chat/', include('chat.urls')),
+    path('chat/', include('chat.urls')),
+    path('storage/', include('storage.urls')),
 ]
