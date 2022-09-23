@@ -1,21 +1,48 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <form method=POST>{% csrf_token %}
-        <select name=player>
+{% extends 'base.html' %}
+  {% block content %}
+  <div class="container">
+    <div class="form">
+      <h3>Rock Paper Scissor</h3>
+  <form method=POST>{% csrf_token %}
+        <select name=player class="drop">
         <option name="ro">Rock</oprion>
         <option name="paper">Paper</oprion>
         <option name="scissor">Scissor</oprion>
-        </select>
-        <input type="submit"></form>
-        {%  for message in messages %}
-          <h1> {{message}} </h1>
-        {% endfor %}    
-</body>
-</html>
+        </select><br>
+        <input type="submit" class="btn-l">
+    </form>
+        
+    </div>
+    {%  for message in messages %}
+      <h1> {{message}} </h1>
+    {% endfor %}
+  </div>      
+
+<style>
+body{
+  background-color: dodgerblue;
+}
+.container{
+  height: 95vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.form{
+  background-color: slateblue;
+  padding: 25px;
+  margin: 2px;
+}
+.drop,.btn-l{
+  background-color:white;
+  height: 50px;
+  width: 200px;
+  margin: 20px;
+}
+.btn-l{
+  color:black;
+  background-color: greenyellow;
+}
+</style>
+{% endblock %}

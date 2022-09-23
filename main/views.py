@@ -6,6 +6,7 @@ import pyqrcode
 import png
 from django.core.mail import send_mail
 from django.contrib import messages
+from django.contrib.auth.decorators import login_required
 # Create your views here.
 
 def home(request):
@@ -43,6 +44,7 @@ def session_read(request):
     request.session['token']='Token'
     return HttpResponse(request.session)
 import random
+@login_required(login_url='accounts/login/')
 def rock_paper_scissor(request):
     if request.method=='GET':
         code=''
@@ -62,8 +64,10 @@ def rock_paper_scissor(request):
         else:
             result='You Won!'
         # return HttpResponse(f'Bot Move : {bot_move}, Your Move : {player_move},<hr>Result : {result}')
-        messages.info(request,f'Bot Move : {bot_move}, Your Move : {player_move} Result : {result}')
-        return redirect('/main')
+        messages.info(request,f'Result : {result}')
+        messages.info(request,f'Your Move : {player_move}')
+        messages.info(request,f'Bot Move : {bot_move}')
+        return redirect('/')
 def test_API(request):
     return JsonResponse({"sum":"value","second":"book","third":'animal'})
 def fetch_page(request):

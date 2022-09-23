@@ -5,6 +5,7 @@ from django.http import HttpResponse
 from django.contrib import messages
 # Create your views here.
 
+
 def register(request):
     if request.method=='GET':
         return render(request,'authentication/register.html')
@@ -32,6 +33,8 @@ def register(request):
         return redirect('/')
 
 def login(request):
+    if request.user.is_authenticated:
+        return redirect('/')
     if request.method=='GET':
         return render(request,'authentication/login.html')
     if request.method=='POST':
