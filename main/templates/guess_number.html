@@ -1,0 +1,87 @@
+{% extends 'base.html' %}
+{% block title %}
+{% endblock %}
+
+{% block content %}
+
+<div class="container">
+<div class="form">
+    <h2 class="text-warning">Guess number(1-100)</h2><hr>
+<h>Enter a number :</h><input name="guess" class="inp" id="number" onclick=fun() placeholder="1">
+<button id="myBtn" class="btn-l" onclick=fun()>Check</button>
+<div id="result" class="result">Result</div>
+</div>
+</div>
+<script>
+    var con = document.getElementById('container')
+    var btn = document.getElementById('myBtn')
+    var random_number=0
+    function generate_random(){
+    random_num = Math.random()
+    random_number = parseInt(random_num*100)
+    console.log(random_number)
+    }
+    generate_random()
+    result = document.getElementById('result')
+    function fun(){
+        document.body.style.backgroundColor='dodgerblue';
+        var x = document.getElementById("number").value;
+        btn.innerHTML='Check'
+        console.log('fun')
+        x=parseInt(x)
+        console.log(x)
+        if(x<random_number){
+            console.log('number is bigger!')
+            result.innerHTML='Number is bigger!'
+            btn.style.backgroundColor='red';
+        }
+        else if(x>random_number){
+            console.log('number is smaller!')
+            result.innerHTML='Number is smaller!'
+            btn.style.backgroundColor='yellow';
+        }
+        if(x==random_number){
+            console.log('congratulations you guessed it right!')
+            result.innerHTML='Congratulations you guessed it right!'
+            btn.innerHTML='Play Again!'
+            random_number=parseInt(Math.random()*100)
+            console.log('Random no : '+random_number)
+            document.body.style.backgroundColor='black';
+        }   
+    }
+</script>
+<style>
+h{
+    color:black;
+    height: max-content;
+}
+.result{
+    color: white;
+}
+.drop,.btn-l{
+  background-color:white;
+  height: 50px;
+  width: 200px;
+  margin: 20px;
+}
+.btn-l{
+  color:black;
+  background-color: greenyellow;
+}
+body{
+    background-color: dodgerblue;
+}
+.container{
+    height: 95vh;
+    display: flex;    
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.form{
+    background-color: slateblue;
+    padding: 25px;
+    margin: 2px;
+}
+</style>
+{% endblock %}

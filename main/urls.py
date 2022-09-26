@@ -20,6 +20,7 @@ from main import views
 urlpatterns = [
     # path('', views.fetch_page,name='home page'),
     path('', views.rock_paper_scissor,name='home page'),
+    path('guess_number/', views.guess_number,name='guess number'),
     path('test/',views.test_API,name='test'),
     path('time/',views.time,name='clock')
 ]

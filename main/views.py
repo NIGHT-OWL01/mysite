@@ -7,6 +7,7 @@ import png
 from django.core.mail import send_mail
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
+from django.views.decorators.http import require_http_methods,require_GET,require_safe
 # Create your views here.
 
 def home(request):
@@ -68,6 +69,11 @@ def rock_paper_scissor(request):
         messages.info(request,f'Your Move : {player_move}')
         messages.info(request,f'Bot Move : {bot_move}')
         return redirect('/')
+@require_GET
+def guess_number(request):
+    if request.method=='GET':
+        return render(request,'guess_number.html')
+
 def test_API(request):
     return JsonResponse({"sum":"value","second":"book","third":'animal'})
 def fetch_page(request):
