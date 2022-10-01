@@ -20,7 +20,9 @@ def time_since_created(request):
     print('created : ',created)
     days=now-created
     print(days)
-    return HttpResponse(f'today : {now} <br> created {created} <hr> days passed {days}')
+    print(f'today : {now} <br> created {created} <hr> days passed {days.days}')
+    return JsonResponse({'today':now,'created':created,'days':days.days})
+    # return HttpResponse(f'today : {now} <br> created {created} <hr> days passed {days}')
 
 
 def QrCodeView(request):
@@ -45,13 +47,16 @@ def session_read(request):
     request.session['token']='Token'
     return HttpResponse(request.session)
 import random
-# @login_required(login_url='accounts/login/')
+# @login_required(login_url='/accounts/login/')
 def rock_paper_scissor(request):
     if request.method=='GET':
-        code=''
+        num_visit = request.session.get('num_visits',0)
+        request.session['num_visits']=num_visit+1
+        print(num_visit)
         return render(request,'rock_paper.html')
 
     if request.method=='POST':
+        print(request.POST)
         print('POST called')
         print(request.POST['player'])
         player_move=request.POST['player'].lower()

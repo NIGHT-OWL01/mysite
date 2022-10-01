@@ -17,5 +17,8 @@ from django.urls import path
 from storage import views
 
 urlpatterns = [
-    path('', views.contact,name='store contact'),
+    path('', views.storage,name='storage'),
+    path('contactStorage/',views.contactStorage,name="contactStorage"),
+    path('contactSearch/',views.contactSearch,name="contactSearch")
+
 ]

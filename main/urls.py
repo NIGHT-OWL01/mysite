@@ -22,5 +22,6 @@ urlpatterns = [
     path('', views.rock_paper_scissor,name='home page'),
     path('guess_number/', views.guess_number,name='guess number'),
     path('test/',views.test_API,name='test'),
-    path('time/',views.time,name='clock')
+    path('time/',views.time,name='clock'),
+    path('created/',views.time_since_created,name='created')
 ]

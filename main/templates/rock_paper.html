@@ -14,12 +14,26 @@
         </select><br>
         <input type="submit" class="btn-l">
     </form>
+    <button id="btn" onclick=rock_post() hidden>btn</button>
         
     </div>
     {%  for message in messages %}
       <h1> {{message}} </h1>
     {% endfor %}
   </div>      
+<script>
+function rock_post(){
+  fetch('/',{
+    method:'POST',
+    headers:{
+      'Accept':'application/json',
+      'Content-Type':'application/json'
+    },
+    body:JSON.stringify({'move':'rock'})
+  })  
+}
+
+</script>
 
 <style>
 body{
