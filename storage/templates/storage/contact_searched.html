@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+
+{% block title %}
+<title>Contact search result</title>
+{% endblock %}
+
+{% block content %}
+<h1 class="text-primary">Results ({{results}})</h1><a href="{% url 'contactStorage' %}">Go back</a><hr>
+{% for contact in contacts %}
+<h3 >Name : {{contact.name}}</h3>
+<h3 class="text-warning">Number : {{contact.number}}</h3>
+<h3 class="text-success">Relation : {{contact.relation}}</h3><hr>
+{% endfor %}
+{% endblock %}
